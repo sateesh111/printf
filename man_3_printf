@@ -1,0 +1,100 @@
+.TH _printf 1 "16 March 2021" "0.1" "_printf man page"
+.SH NAME
+.B _printf - format data and print output into stdout
+.SH SYNOPSIS
+.IP
+.I #include "holberton.h"
+.IP
+.I int _printf(const char *format, ...);
+.IP
+.I _printf [FORMAT][ARGUMENT]...
+
+.SH DESCRIPTION
+
+The functions in _printf() produces output according to the format specifiers
+provided below. Each argument passed into _printf is written out into stdout,
+the standard output stream. The format controls the output in _printf.
+
+.SH RETURN VALUE
+Upon a successful return, _printf will return the number of characters printed.
+Null byte used to end string outputs is excluded. _printf will return an exit
+status of -1 upon failure.
+
+.SH FORMAT OF FUNCTION
+The format of _printf is a character string and can include zero or more format
+specifiers, each matching zero or more arguments being passed in. Each format
+specifier began with "%" followed by the character to the specific format
+specifier such as "%d". By default, arguments passed in must followed the order 
+of the each format specifier. For example:
+.IP
+.B  _printf("Negative:[%d]\n", -762534);
+.IP
+.B $Negative:[-762534]
+.SH FORMAT SPECIFIERS
+.IP s
+The argument passed for specifier "%s" is a literal string in const char *,
+which will be a pointer to an array of character type that points to a string.
+Characters from the array are written up to (but not including ) the terminating
+ null bye ('/0').does not take any options. However, you can supply student name.
+.IP c
+The argument passed for specifier "%c" is of type int. which is then converted
+to an unsigned char, which is then written.
+.IP %
+The argument passed is not converted and will simply be written as "%". To write 
+out "%", format must be "%%".
+.IP d,i
+The argument passed for specifiers "%d" and "%i" is an int argument converted
+into signed decimal notation. In _printf, the specifiers are handled the same
+way. The precision functionality, the number of digits that appears in
+beginning, is still in development and will be added at an later time.
+
+.IP o,u,x,X
+The argument passed for specifiers "%o", "%u", "%x", and "%X" are handled as
+follows:
+.IP
+"%o" takes in an unsigned integer and converts the argument into an unsigned
+octal.
+.IP
+"%u" takes in an unsigned integer and converts the argument into an unsigned
+decimal
+.IP
+"%x","%X" takes in an unsigned integer and converts the argument into an
+ unsigned hexadecimal. For "x", letters "abcdef" are used while for "X", letters 
+"ABCDEF" are used.
+.IP p
+The void * pointer argument is printed in hexadecimal
+.IP -
+The converted value is to be left adjusted on the field boundary.The converted
+value is padded on the right with blanks, rather than on the left with blanks or
+zeros.
+.IP ' '
+(a space) A blank should be left before a positive number (or empty string)
+produced by a signed conversion.
+.IP 0
+The value should be zero padded. For other specifier conversions, the converted
+value is padded on the left with zeros rather than blanks.
+.IP +
+A sign (+ or -) should always be placed before a number produced by a signed
+conversion.  By default, a sign is used only for negative numbers. A + overrides 
+a space if both are used.
+.IP #
+ The value should be converted to an alternate form.  For o conversions, the
+first character of the output string is made zero.
+.IP b
+ "%b"takes in an unsigned integer and converts the argument into converted to
+binary.
+.IP r
+ "%r" it takes a string and prints the reversed string.
+.IP R
+ "%R" it takes a string and prints the rot13'ed string.
+.IP S
+ "%S" it takes a string and change Non printable characters  by \x .
+.IP
+.B  _printf("%S\n", "Holberton\nSchool");
+.IP
+.B Holberton\x0ASchool
+.IP
+.SH BUGS
+No known bugs
+.SH AUTHORS
+Amanuel Awol, Bezawit Kifle
